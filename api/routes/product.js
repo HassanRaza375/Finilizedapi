@@ -42,7 +42,6 @@ router.get("/:ID", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  debugger;
   const products = new Producted({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
