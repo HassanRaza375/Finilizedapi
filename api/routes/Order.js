@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 router.get("/", (req, res, next) => {
   Ordered.find()
+    .populate("ProductID")
     .exec()
     .then((e) => {
       const response = {
