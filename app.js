@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const productroutes = require("./api/routes/product");
 const orderroutes = require("./api/routes/Order");
+const postroutes = require("./api/routes/Post");
 const scrollroutes = require("./api/routes/Infinite");
 // body parser to get data
 app.use((req, res, next) => {
@@ -30,6 +31,7 @@ mongoose.connect(
 );
 app.use("/product", productroutes);
 app.use("/order", orderroutes);
+app.use("/Post", postroutes);
 app.use("/infinie", scrollroutes);
 
 module.exports = app;

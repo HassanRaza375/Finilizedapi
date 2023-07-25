@@ -7,8 +7,8 @@ const allItems = generateDummyData(10000);
 
 // Endpoint to fetch paginated data
 router.get("/scroll", (req, res) => {
-  console.log(req.body.page);
-  console.log(req.params);
+  console.log(req.query.page);
+  console.log(req.query);
   const page = parseInt(req.body.page) || 1;
   const pageSize = parseInt(req.body.pageSize) || 10;
 
@@ -39,7 +39,7 @@ router.get("/scroll", (req, res) => {
 function generateDummyData(count) {
   const data = [];
   for (let i = 1; i <= count; i++) {
-    data.push({ Id: i, url: "", Name: i });
+    data.push({ Id: i + 20, url: "", Name: i });
   }
   return data;
 }
