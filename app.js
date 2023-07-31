@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const userroutes = require("./api/routes/User");
 const productroutes = require("./api/routes/product");
 const orderroutes = require("./api/routes/Order");
 const postroutes = require("./api/routes/Post");
@@ -29,6 +30,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+app.use("/User", userroutes);
 app.use("/product", productroutes);
 app.use("/order", orderroutes);
 app.use("/Post", postroutes);
