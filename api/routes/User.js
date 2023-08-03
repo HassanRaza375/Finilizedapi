@@ -44,13 +44,32 @@ router.post("/SignUp", (req, res, next) => {
     });
 });
 router.delete("/:userId", (req, res, next) => {
-  Users.find({ _id: req.params.userId })
+  Users.deleteOne({ _id: req.params.userId })
     .exec()
     .then((results) => {
-      res.status(200).json({ message: "Delete", ress: results });
+      res.status(200).json({ message: "Deleted", ress: results });
     })
     .catch((err) => {
       res.status(500).json({ message: err });
+    });
+});
+router.get("/", (req, res, next) => {
+  Users.find()
+    .exec()
+    .then((e) => {
+      const response = {
+        count: e.length,
+        Peoples: e,
+      };
+      res
+        .status(200)
+        .json({ msg: "Handling get / request", Response: response });
+    })
+    .catch((e) => {
+      res.status(404).json({
+        Err: e,
+        Peoples: "not found",
+      });
     });
 });
 module.exports = router;
